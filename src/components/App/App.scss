@@ -1,1 +1,44 @@
+@import "../variables";
 
+.main-container{
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("../../img/components_backgrounds/main_background.png");
+  background-size: 64px 64px;
+  image-rendering: pixelated;
+
+  section.main-section{
+    height: calc(100vh - #{$header-height});
+    display: flex;
+
+    div.main-elements{
+      width: calc(100% - #{$sidebar-width});
+      height: 100%;
+      padding: 40px;
+    }
+  }
+
+
+
+
+}
+
+.wood-container{
+  background-image: url("../../img/components_backgrounds/wood_background.png");
+  background-size: 64px 64px;
+  image-rendering: pixelated;
+  border: 6px solid $wood-border-color;
+}
+
+.no-style-flex{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.no-style-flex__start{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}

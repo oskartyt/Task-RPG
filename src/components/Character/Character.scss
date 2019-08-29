@@ -1,0 +1,32 @@
+@import "../variables";
+
+.character-portrait{
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  background-image: url("../../img/Characters/Knight_M.gif");
+  background-size: contain;
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+}
+
+.monster-portrait{
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  background-image: url("../../img/Monsters/Demon1.gif");
+  background-size: contain;
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+}
+
+.stats{
+  display: inline-block;
+  span{
+    display: block;
+  }
+}

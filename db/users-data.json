@@ -1,0 +1,26 @@
+{
+  "users": [
+    {"id": "user1",
+      "basic-data": {
+        "name": "Wacław Pogromca Modliszek",
+        "type": "knight",
+        "sex": "M"
+      },
+      "tasks": {
+        "daily": "{}",
+        "special": "{}"
+      }
+    },
+    {"id": "user2",
+      "basic-data": {
+        "name": "username",
+        "type": "knight",
+        "sex": "M"
+      },
+      "tasks": {
+        "daily": "{}",
+        "special": "{}"
+      }
+    }
+  ]
+}

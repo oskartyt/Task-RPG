@@ -1,0 +1,28 @@
+@import "../variables";
+
+.not-loaded{
+  height: 100%;
+  width: 100%;
+  .running-wizard-f{
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    background-image: url("../../img/components_elements/RunningWizF.gif");
+    background-size: contain;
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+  }
+  .running-wizard-m{
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    background-image: url("../../img/components_elements/RunnigWizM.gif");
+    background-size: contain;
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+  }
+}
