@@ -1,26 +1,78 @@
 {
   "users": [
-    {"id": "user1",
+    {
+      "id": "user1",
       "basic-data": {
         "name": "Wacław Pogromca Modliszek",
         "type": "knight",
         "sex": "M"
       },
       "tasks": {
-        "daily": "{}",
-        "special": "{}"
+        "daily": [
+          {
+            "name": "Zmyj naczynia",
+            "type": 0
+          },
+          {
+            "name": "Ugotuj obiad",
+            "type": 0
+          }
+        ],
+        "uncompletedDaily": [
+          {
+            "name": "Zmyj naczynia",
+            "type": 0
+          },
+          {
+            "name": "Ugotuj obiad",
+            "type": 0
+          }
+        ],
+        "special": {}
       }
     },
-    {"id": "user2",
+    {
+      "id": "user2",
       "basic-data": {
-        "name": "username",
+        "name": "Wacław Pogromca Modliszek",
         "type": "knight",
         "sex": "M"
       },
       "tasks": {
-        "daily": "{}",
-        "special": "{}"
+        "daily": [
+          {
+            "name": "Zmyj naczynia",
+            "type": 0
+          },
+          {
+            "name": "Ugotuj obiad",
+            "type": 0
+          }
+        ],
+        "uncompletedDaily": [
+          {
+            "name": "Zmyj naczynia",
+            "type": 0
+          },
+          {
+            "name": "Ugotuj obiad",
+            "type": 0
+          }
+        ],
+        "special": {}
       }
+    },
+    {
+      "id": "DZonywN"
+    },
+    {
+      "id": "L9Icxcf"
+    },
+    {
+      "id": "sImtFYN"
+    },
+    {
+      "id": "6pHEY_6"
     }
   ]
 }

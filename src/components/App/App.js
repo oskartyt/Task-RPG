@@ -27,13 +27,28 @@ class App extends Component{
       fetch('http://localhost:3002/users/user1')
           .then(data=>data.json())
           .then(data=>{
+              console.log(data);
               this.setState({userData:data});
               this.setState({loadedContent:true})
           })
           .catch(err=>{console.log(err)})
   }
 
-    render() {
+  newDailyTask=(name,type)=>{
+      let newTask={name:name,type:type};
+      let reloadedDailyTasks=this.state.userData.tasks.daily;
+      reloadedDailyTasks.push(newTask);
+      let userData=this.state.userData
+      userData.tasks.daily= reloadedDailyTasks;
+      console.log(userData)
+
+      fetch('http://localhost:3002/users/user1', {
+          method : 'PUT',
+          body: JSON.stringify(userData)
+      }).then(resp=>console.log(resp));
+  };
+
+  render() {
     if (this.state.loggedIn){
       return (
           <HashRouter>
@@ -44,7 +59,8 @@ class App extends Component{
                       <div className='main-elements'>
                           {(this.state.loadedContent?
                                   <Switch>
-                                      <Route exact path='/' component={Tasks}/>
+                                      <Route exact path='/' render={()=><Tasks tasks={this.state.userData.tasks}
+                                                                               addDailyTask={this.newDailyTask}/>}/>
                                       <Route path='/character' component={Character}/>
                                       <Route component={NotFound}/>
                                   </Switch>

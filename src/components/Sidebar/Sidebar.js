@@ -9,7 +9,7 @@ class Sidebar extends Component{
                 <ul>
                     <li><Link to="/">Zadania</Link></li>
                     <li><Link to="/character">Postać</Link></li>
-                    <li><Link to="/xyz">Karina 404</Link></li>
+                    <li><Link to="/xyz">Kraina 404</Link></li>
                 </ul>
             </div>
         )

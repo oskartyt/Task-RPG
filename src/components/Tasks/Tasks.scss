@@ -2,4 +2,42 @@
 
 .daily-tasks, .special-tasks, .unsubmitted-tasks{
   width: 30%;
+  span{
+    margin-bottom: 5px;
+  }
+  input{
+    width:100%;
+    background-image: url("../../img/components_backgrounds/wood_background2.png");
+    background-size: 32px 32px;
+    image-rendering: pixelated;
+    border: 2px solid $wood-font-color;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+    }
+  ::-webkit-input-placeholder {
+    color: $wood-font-color;
+  }
+  select{
+    width:100%;
+    background-image: url("../../img/components_backgrounds/wood_background2.png");
+    background-size: 32px 32px;
+    image-rendering: pixelated;
+    border: 2px solid $wood-font-color;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  li{
+    display: flex;
+    justify-content: space-between;
+    button{
+      background-image: url("../../img/components_backgrounds/wood_background2.png");
+      background-size: 32px 32px;
+      image-rendering: pixelated;
+      border: 1px solid $wood-font-color;
+      border-radius: 3px;
+    }
+    margin-bottom: 3px;
+  }
 }
