@@ -4,7 +4,7 @@ import './Tasks.scss';
 class Tasks extends Component{
     state={
         newDailyTask:"",
-        typeOfNewDailyTask:0,
+        typeOfNewDailyTask:1,
         // dailyTasks:this.props.tasks.daily,
         // uncompletedDailyTasks:this.props.tasks.uncompletedDaily,
         // specialTasks:this.props.tasks.special
@@ -41,12 +41,12 @@ class Tasks extends Component{
                         <input className='submit' type="submit" value="Zatwierdź"/>
                     </form>
                     <ul>
-                        {this.props.tasks.daily.map(
+                        {this.props.tasks.uncompletedDaily.map(
                             (e,index)=>(
                                 <li key={index} data-task-name={e.name} data-task-type={e.type}>
                                     <span>{e.name} ({e.type})</span>
                                     <div>
-                                        <button>Wykonano</button>
+                                        <button onClick={this.props.completeDailyTask}>Wykonano</button>
                                         <button onClick={this.props.deleteDailyTask}>Usuń zadanie</button>
                                     </div>
                                 </li>

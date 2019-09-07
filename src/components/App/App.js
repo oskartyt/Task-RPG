@@ -39,6 +39,7 @@ class App extends Component{
                   console.log('date change');
                   let userData=data;
                   userData.lastVisitDate={year:new Date().getFullYear(),month:new Date().getMonth(), day:new Date().getDate()};
+                  userData.tasks.uncompletedDaily=userData.tasks.daily;
                   this.changeDataOnServer(userData);
               }
 
@@ -47,6 +48,7 @@ class App extends Component{
   }
 
   changeDataOnServer=(userData)=>{
+      console.log(userData);
       fetch('http://localhost:3002/users/user1', {
           method : 'PUT',
           headers: {
@@ -55,7 +57,7 @@ class App extends Component{
           body: JSON.stringify(userData)
       }).then(data=>data.json())
           .then(data=>{
-              console.log(data);
+              // console.log(data);
               this.setState({userData:data,loadedContent:true});
           })
           .catch(err=>{console.log(err)});
@@ -65,22 +67,37 @@ class App extends Component{
       let newTask={name:name,type:type};
       let reloadedDailyTasks=this.state.userData.tasks.daily;
       reloadedDailyTasks.push(newTask);
+      let reloadedUncompletedDailyTasks=this.state.userData.tasks.uncompletedDaily;
+      reloadedUncompletedDailyTasks.push(newTask);
+
       let userData=this.state.userData;
       userData.tasks.daily= reloadedDailyTasks;
+      userData.tasks.uncompletedDaily=reloadedUncompletedDailyTasks;
       this.changeDataOnServer(userData)
   };
 
   deleteDailyTask=(e)=>{
-      let target=e.target.parentElement.parentElement;
+      let taskName=e.target.parentElement.parentElement.dataset.taskName;
       let reloadedDailyTasks=this.state.userData.tasks.daily;
-      reloadedDailyTasks=reloadedDailyTasks.filter((v)=>v.name!==target.dataset.taskName);
+      reloadedDailyTasks=reloadedDailyTasks.filter((v)=>v.name!==taskName);
+      let reloadedUncompletedDailyTasks=this.state.userData.tasks.uncompletedDaily;
+      reloadedUncompletedDailyTasks=reloadedUncompletedDailyTasks.filter((v)=>v.name!==taskName);
 
       let userData=this.state.userData;
       userData.tasks.daily= reloadedDailyTasks;
+      userData.tasks.uncompletedDaily=reloadedUncompletedDailyTasks;
       this.changeDataOnServer(userData)
   };
 
-  completeDailyTask=()=>{};
+  completeDailyTask=(e)=>{
+      let taskName=e.target.parentElement.parentElement.dataset.taskName;
+      let reloadedUncompletedDailyTasks=this.state.userData.tasks.uncompletedDaily;
+      reloadedUncompletedDailyTasks=reloadedUncompletedDailyTasks.filter((v)=>v.name!==taskName);
+
+      let userData=this.state.userData;
+      userData.tasks.uncompletedDaily=reloadedUncompletedDailyTasks;
+      this.changeDataOnServer(userData)
+  };
 
 
   render() {
@@ -94,9 +111,11 @@ class App extends Component{
                       <div className='main-elements'>
                           {(this.state.loadedContent?
                                   <Switch>
-                                      <Route exact path='/' render={()=><Tasks tasks={this.state.userData.tasks}
-                                                                               addDailyTask={this.newDailyTask}
-                                                                               deleteDailyTask={this.deleteDailyTask}
+                                      <Route exact path='/' render={()=><Tasks
+                                              tasks={this.state.userData.tasks}
+                                              addDailyTask={this.newDailyTask}
+                                              deleteDailyTask={this.deleteDailyTask}
+                                              completeDailyTask={this.completeDailyTask}
                                       />}/>
                                       <Route path='/character' component={Character}/>
                                       <Route component={NotFound}/>

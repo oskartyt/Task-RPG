@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "user1",
-      "basic-data": {
+      "basicData": {
         "name": "Wacław Pogromca Modliszek",
         "type": "knight",
         "sex": "M"
@@ -19,21 +19,21 @@
           },
           {
             "name": "Daj radę",
-            "type": 0
-          },
-          {
-            "name": "Daj radę",
-            "type": 0
+            "type": 7
           }
         ],
         "uncompletedDaily": [
           {
             "name": "Zmyj naczynia",
-            "type": 0
+            "type": 1
           },
           {
-            "name": "Ugotuj obiad",
-            "type": 0
+            "name": "Zmyj naczynia2",
+            "type": 7
+          },
+          {
+            "name": "Daj radę",
+            "type": 7
           }
         ],
         "special": {}
@@ -42,37 +42,6 @@
         "year": 2019,
         "month": 8,
         "day": 7
-      }
-    },
-    {
-      "id": "user2",
-      "basic-data": {
-        "name": "Wacław Pogromca Modliszek",
-        "type": "knight",
-        "sex": "M"
-      },
-      "tasks": {
-        "daily": [
-          {
-            "name": "Zmyj naczynia",
-            "type": 0
-          },
-          {
-            "name": "Ugotuj obiad",
-            "type": 0
-          }
-        ],
-        "uncompletedDaily": [
-          {
-            "name": "Zmyj naczynia",
-            "type": 0
-          },
-          {
-            "name": "Ugotuj obiad",
-            "type": 0
-          }
-        ],
-        "special": {}
       }
     }
   ],
