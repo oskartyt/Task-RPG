@@ -5,9 +5,9 @@ class Tasks extends Component{
     state={
         newDailyTask:"",
         typeOfNewDailyTask:0,
-        dailyTasks:this.props.tasks.daily,
-        uncompletedDailyTasks:this.props.tasks.uncompletedDaily,
-        specialTasks:this.props.tasks.special
+        // dailyTasks:this.props.tasks.daily,
+        // uncompletedDailyTasks:this.props.tasks.uncompletedDaily,
+        // specialTasks:this.props.tasks.special
     };
     handleChange = e =>{
         this.setState({
@@ -31,19 +31,24 @@ class Tasks extends Component{
                             name='typeOfNewDailyTask'
                             value={this.state.typeOfNewDailyTask}
                             onChange={this.handleChange}>
-                            <option value={0} style={{color:'green'}}>Zbieranie marchewek</option>
-                            <option value={1} style={{color:'blue'}}>Polowanie na króliki</option>
-                            <option value={2} style={{color:'red'}}>Walka z jajem smoka</option>
-                            <option value={3} style={{color:'orange'}}>Super heroiczne zadanie</option>
+
+                            <option value={1} style={{color:'green'}}>Zbieranie marchewek (1)</option>
+                            <option value={3} style={{color:'blue'}}>Polowanie na króliki (3)</option>
+                            <option value={7} style={{color:'red'}}>Walka z jajem smoka (7)</option>
+                            <option value={11} style={{color:'orange'}}>Super heroiczne zadanie (11)</option>
+
                         </select>
                         <input className='submit' type="submit" value="Zatwierdź"/>
                     </form>
                     <ul>
-                        {this.state.dailyTasks.map(
+                        {this.props.tasks.daily.map(
                             (e,index)=>(
-                                <li key={index}>
-                                    {e.name}
-                                    <button>Wykonano</button>
+                                <li key={index} data-task-name={e.name} data-task-type={e.type}>
+                                    <span>{e.name} ({e.type})</span>
+                                    <div>
+                                        <button>Wykonano</button>
+                                        <button onClick={this.props.deleteDailyTask}>Usuń zadanie</button>
+                                    </div>
                                 </li>
                             )
                         )}
@@ -66,22 +71,22 @@ class Tasks extends Component{
                     </ul>
 
                 </div>
-                <div className='wood-container unsubmitted-tasks'>
-                    <span>Zadania Zaległe</span>
-                    <form>
-                        {/*<input type="text" value="" placeholder='Nazwa zadania'/>*/}
-                        {/*<input type="submit" value="Zatwierdź"/>*/}
-                    </form>
-                    <ul>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                    </ul>
+                {/*<div className='wood-container unsubmitted-tasks'>*/}
+                {/*    <span>Zadania Zaległe</span>*/}
+                {/*    <form>*/}
+                {/*        /!*<input type="text" value="" placeholder='Nazwa zadania'/>*!/*/}
+                {/*        /!*<input type="submit" value="Zatwierdź"/>*!/*/}
+                {/*    </form>*/}
+                {/*    <ul>*/}
+                {/*        <li>a</li>*/}
+                {/*        <li>a</li>*/}
+                {/*        <li>a</li>*/}
+                {/*        <li>a</li>*/}
+                {/*        <li>a</li>*/}
+                {/*        <li>a</li>*/}
+                {/*    </ul>*/}
 
-                </div>
+                {/*</div>*/}
             </div>
 
             );

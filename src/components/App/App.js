@@ -28,25 +28,60 @@ class App extends Component{
           .then(data=>data.json())
           .then(data=>{
               console.log(data);
-              this.setState({userData:data});
-              this.setState({loadedContent:true})
+              if (
+                  data.lastVisitDate.year===new Date().getFullYear() &&
+                  data.lastVisitDate.month===new Date().getMonth() &&
+                  data.lastVisitDate.day===new Date().getDate()
+              ){
+                  console.log('no date change');
+                  this.setState({userData:data,loadedContent:true});
+              }else{
+                  console.log('date change');
+                  let userData=data;
+                  userData.lastVisitDate={year:new Date().getFullYear(),month:new Date().getMonth(), day:new Date().getDate()};
+                  this.changeDataOnServer(userData);
+              }
+
           })
           .catch(err=>{console.log(err)})
   }
+
+  changeDataOnServer=(userData)=>{
+      fetch('http://localhost:3002/users/user1', {
+          method : 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+      }).then(data=>data.json())
+          .then(data=>{
+              console.log(data);
+              this.setState({userData:data,loadedContent:true});
+          })
+          .catch(err=>{console.log(err)});
+  };
 
   newDailyTask=(name,type)=>{
       let newTask={name:name,type:type};
       let reloadedDailyTasks=this.state.userData.tasks.daily;
       reloadedDailyTasks.push(newTask);
-      let userData=this.state.userData
+      let userData=this.state.userData;
       userData.tasks.daily= reloadedDailyTasks;
-      console.log(userData)
-
-      fetch('http://localhost:3002/users/user1', {
-          method : 'PUT',
-          body: JSON.stringify(userData)
-      }).then(resp=>console.log(resp));
+      this.changeDataOnServer(userData)
   };
+
+  deleteDailyTask=(e)=>{
+      let target=e.target.parentElement.parentElement;
+      let reloadedDailyTasks=this.state.userData.tasks.daily;
+      reloadedDailyTasks=reloadedDailyTasks.filter((v)=>v.name!==target.dataset.taskName);
+
+      let userData=this.state.userData;
+      userData.tasks.daily= reloadedDailyTasks;
+      this.changeDataOnServer(userData)
+  };
+
+  completeDailyTask=()=>{};
+
 
   render() {
     if (this.state.loggedIn){
@@ -60,7 +95,9 @@ class App extends Component{
                           {(this.state.loadedContent?
                                   <Switch>
                                       <Route exact path='/' render={()=><Tasks tasks={this.state.userData.tasks}
-                                                                               addDailyTask={this.newDailyTask}/>}/>
+                                                                               addDailyTask={this.newDailyTask}
+                                                                               deleteDailyTask={this.deleteDailyTask}
+                                      />}/>
                                       <Route path='/character' component={Character}/>
                                       <Route component={NotFound}/>
                                   </Switch>

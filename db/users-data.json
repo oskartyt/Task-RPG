@@ -11,10 +11,18 @@
         "daily": [
           {
             "name": "Zmyj naczynia",
+            "type": 1
+          },
+          {
+            "name": "Zmyj naczynia2",
+            "type": 7
+          },
+          {
+            "name": "Daj radę",
             "type": 0
           },
           {
-            "name": "Ugotuj obiad",
+            "name": "Daj radę",
             "type": 0
           }
         ],
@@ -29,6 +37,11 @@
           }
         ],
         "special": {}
+      },
+      "lastVisitDate": {
+        "year": 2019,
+        "month": 8,
+        "day": 7
       }
     },
     {
@@ -61,18 +74,7 @@
         ],
         "special": {}
       }
-    },
-    {
-      "id": "DZonywN"
-    },
-    {
-      "id": "L9Icxcf"
-    },
-    {
-      "id": "sImtFYN"
-    },
-    {
-      "id": "6pHEY_6"
     }
-  ]
+  ],
+  "monsters": []
 }
