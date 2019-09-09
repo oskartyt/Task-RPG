@@ -33,9 +33,9 @@ class Tasks extends Component{
                             onChange={this.handleChange}>
 
                             <option value={1} style={{color:'green'}}>Zbieranie marchewek (1)</option>
-                            <option value={3} style={{color:'blue'}}>Polowanie na króliki (3)</option>
-                            <option value={7} style={{color:'red'}}>Walka z jajem smoka (7)</option>
-                            <option value={11} style={{color:'orange'}}>Super heroiczne zadanie (11)</option>
+                            <option value={2} style={{color:'blue'}}>Polowanie na króliki (2)</option>
+                            <option value={5} style={{color:'red'}}>Walka z jajem smoka (5)</option>
+                            <option value={9} style={{color:'orange'}}>Super heroiczne zadanie (9)</option>
 
                         </select>
                         <input className='submit' type="submit" value="Zatwierdź"/>

@@ -1,51 +1,73 @@
 import React,{Component} from 'react';
 import './Character.scss';
+import { monsterImage } from "./Monsters";
+
+import Knight_M from '../../img/Characters/Knight_M.gif'
+
 
 class Character extends Component{
     render() {
+        let monster=this.props.currentMonster
         return (
-            <div>
+            <div className='h-m-container no-style-flex__no-height'>
+                {/*Container with hero data*/}
                 <div className='wood-container '>
+                    {/*Hero name*/}
                     <h2>Wacław pogromca modliszek</h2>
                     <div className='no-style-flex__start'>
+                        {/*Portarait of the hero with background*/}
                         <div className='character-background'>
-                            <div className='character-portrait'></div>
+                            <div className='portrait' style={{backgroundImage:`url(${Knight_M})`}}></div>
                         </div>
                         <div className='stats'>
-                            <span>Punkty ataku:</span>
-                            <span>Punkty obrony:</span>
-                            <span>Zdrowie: 30</span>
+                            {/*div with porgress bar to next lootbox prize (killed monsters/20)*/}
                             <div
-                                style={{width:'250px',
-                                    height:'20px',
-                                    border:'3px solid silver',
-                                    backgroundColor:'darkred'}}
-                                className='max-health'>
 
+                                style={{width:'250px',
+                                    height:'40px',
+                                    border:'3px solid silver',
+                                    backgroundColor:'blue'}}>
                                 <div
                                     style={{width:'30%',
                                         height:'100%',
-                                        backgroundColor:'green'
+                                        backgroundColor:'gold'
                                     }}
-                                    className='health'></div>
+                                    ></div>
                             </div>
+                            <h2>Liczba ubitych potworów</h2>
+                            <span>7/20</span>
+                            <h2>Zdobyte złoto</h2>
+                            <span>37</span>
+
                         </div>
                     </div>
 
                 </div>
                 <div className='wood-container '>
-                    <h2>Genetycznie modyfikowana modliszka</h2>
+                    <h2>{monster.name}</h2>
                     <div className='no-style-flex__start'>
                         <div className='monster-background'>
-                            <div className='monster-portrait'></div>
+                            <div className='portrait' style={{backgroundImage: `url(${monsterImage[monster.image]})`}}></div>
                         </div>
                         <div className='stats'>
-                            <span>Punkty ataku: 1</span>
-                            <span>Punkty obrony: 1</span>
-                            <span>Zdrowie</span>
-                            <div className='max-health'>
-                                <div className='health'></div>
+                            <div
+                                style={{
+                                    width:'250px',
+                                    height:'40px',
+                                    border:'3px solid silver',
+                                    backgroundColor:'black'}}
+                                className='max-health'>
+
+                                <div
+                                    style={{
+                                        width:`${monster.takenDamage/monster.healthMax*100}%`,
+                                        height:'100%',
+                                        backgroundColor:'darkred'
+                                    }}
+                                    className='health'></div>
                             </div>
+                            <h2>Zadane obrażenia</h2>
+                            <span>{monster.takenDamage}/{monster.healthMax}</span>
                         </div>
                     </div>
 

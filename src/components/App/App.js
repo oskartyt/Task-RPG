@@ -20,8 +20,10 @@ import NotLoaded from '../NotLoaded/NotLoaded';
 class App extends Component{
   state={
       loggedIn:true,
-      loadedContent:false,
-      userData:{}
+      loadedUserContent:false,
+      loadedMonstersContent:false,
+      userData:{},
+      monstersData: {}
   };
   componentDidMount() {
       fetch('http://localhost:3002/users/user1')
@@ -34,7 +36,7 @@ class App extends Component{
                   data.lastVisitDate.day===new Date().getDate()
               ){
                   console.log('no date change');
-                  this.setState({userData:data,loadedContent:true});
+                  this.setState({userData:data,loadedUserContent:true});
               }else{
                   console.log('date change');
                   let userData=data;
@@ -43,6 +45,13 @@ class App extends Component{
                   this.changeDataOnServer(userData);
               }
 
+          })
+          .catch(err=>{console.log(err)});
+
+      fetch('http://localhost:3002/monsters')
+          .then(data=>data.json())
+          .then(data=>{
+              this.setState({monstersData:data,loadedMonstersContent:true});
           })
           .catch(err=>{console.log(err)})
   }
@@ -58,7 +67,7 @@ class App extends Component{
       }).then(data=>data.json())
           .then(data=>{
               // console.log(data);
-              this.setState({userData:data,loadedContent:true});
+              this.setState({userData:data,loadedUserContent:true});
           })
           .catch(err=>{console.log(err)});
   };
@@ -91,11 +100,30 @@ class App extends Component{
 
   completeDailyTask=(e)=>{
       let taskName=e.target.parentElement.parentElement.dataset.taskName;
+      let taskType=parseInt(e.target.parentElement.parentElement.dataset.taskType);
       let reloadedUncompletedDailyTasks=this.state.userData.tasks.uncompletedDaily;
       reloadedUncompletedDailyTasks=reloadedUncompletedDailyTasks.filter((v)=>v.name!==taskName);
 
       let userData=this.state.userData;
-      userData.tasks.uncompletedDaily=reloadedUncompletedDailyTasks;
+      userData.tasks.uncompletedDaily=reloadedUncompletedDailyTasks
+
+      let monsterDamage=userData.currentMonster.takenDamage;
+      let monsterMaxHealth=userData.currentMonster.healthMax;
+
+      console.log(monsterDamage,taskType);
+      monsterDamage+=taskType;
+      if (monsterDamage>=monsterMaxHealth){
+          let monsterPrize=userData.currentMonster.healthMax;
+          userData.basicData.colectedGold+=monsterPrize;
+          userData.currentMonster=this.state.monstersData[Math.floor(Math.random()*this.state.monstersData.length)];
+          userData.currentMonster.takenDamage=monsterDamage-monsterMaxHealth;
+          console.log(userData)
+      }else{
+          userData.currentMonster.takenDamage=monsterDamage;
+      }
+
+
+
       this.changeDataOnServer(userData)
   };
 
@@ -109,7 +137,7 @@ class App extends Component{
                   <section className='main-section'>
                       <Sidebar/>
                       <div className='main-elements'>
-                          {(this.state.loadedContent?
+                          {((this.state.loadedUserContent && this.state.loadedMonstersContent)?
                                   <Switch>
                                       <Route exact path='/' render={()=><Tasks
                                               tasks={this.state.userData.tasks}
@@ -117,7 +145,9 @@ class App extends Component{
                                               deleteDailyTask={this.deleteDailyTask}
                                               completeDailyTask={this.completeDailyTask}
                                       />}/>
-                                      <Route path='/character' component={Character}/>
+                                      <Route path='/character' render={()=><Character
+                                          currentMonster={this.state.userData.currentMonster}
+                                      />}/>
                                       <Route component={NotFound}/>
                                   </Switch>
                                   :

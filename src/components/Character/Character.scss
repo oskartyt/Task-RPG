@@ -1,26 +1,30 @@
 @import "../variables";
-
-.character-portrait{
+.h-m-container{
+  div.wood-container{
+    width: 45%
+  }
+}
+.portrait{
   display: inline-block;
   width: 128px;
-  height: 128px;
-  background-image: url("../../img/Characters/Knight_M.gif");
+  height: 224px;
+  //background-image: url("../../img/Characters/Knight_M.gif");
   background-size: contain;
   image-rendering: pixelated;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   margin: 10px;
 }
 
 .monster-portrait{
   display: inline-block;
   width: 128px;
-  height: 128px;
-  background-image: url("../../img/Monsters/Demon1.gif");
+  height: 224px;
+  background-image: url("../../img/Monsters/Orc2.gif");
   background-size: contain;
   image-rendering: pixelated;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   margin: 10px;
 }
 
