@@ -6,7 +6,9 @@
         "name": "Wacław Pogromca Modliszek",
         "type": "knight",
         "sex": "M",
-        "colectedGold": 40
+        "colectedGold": 580,
+        "killedMonsters": 3,
+        "gainedLootboxes": 2
       },
       "currentMonster": {
         "id": 4,
@@ -14,42 +16,75 @@
         "image": "D4",
         "healthMax": 40,
         "gold": 110,
-        "takenDamage": 5
+        "takenDamage": 4
       },
       "tasks": {
         "daily": [
           {
             "name": "Zmyj naczynia",
-            "type": 1
-          },
-          {
-            "name": "Zmyj naczynia2",
-            "type": 7
-          },
-          {
-            "name": "Daj radę3",
-            "type": 1
+            "type": 2
           },
           {
             "name": "Daj radę2",
             "type": 9
           },
           {
-            "name": "Daj radę 32",
+            "name": "Daj radę3",
             "type": 9
           },
           {
-            "name": "Daj radę 31",
+            "name": "Daj radę4",
             "type": 9
+          },
+          {
+            "name": "Daj radę5",
+            "type": 9
+          },
+          {
+            "name": "asdasfd",
+            "type": 5
+          },
+          {
+            "name": "Daj radę6",
+            "type": 5
           }
         ],
-        "uncompletedDaily": [],
+        "uncompletedDaily": [
+          {
+            "name": "Zmyj naczynia",
+            "type": 2
+          },
+          {
+            "name": "Daj radę2",
+            "type": 9
+          },
+          {
+            "name": "Daj radę3",
+            "type": 9
+          },
+          {
+            "name": "Daj radę4",
+            "type": 9
+          },
+          {
+            "name": "Daj radę5",
+            "type": 9
+          },
+          {
+            "name": "asdasfd",
+            "type": 5
+          },
+          {
+            "name": "Daj radę6",
+            "type": 5
+          }
+        ],
         "special": {}
       },
       "lastVisitDate": {
         "year": 2019,
         "month": 8,
-        "day": 9
+        "day": 24
       }
     }
   ],

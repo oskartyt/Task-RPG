@@ -1,0 +1,1 @@
+import Knight_M from '../../img/Characters/Knight_M.gif'

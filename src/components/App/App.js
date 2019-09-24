@@ -109,21 +109,21 @@ class App extends Component{
 
       let monsterDamage=userData.currentMonster.takenDamage;
       let monsterMaxHealth=userData.currentMonster.healthMax;
-
-      console.log(monsterDamage,taskType);
       monsterDamage+=taskType;
       if (monsterDamage>=monsterMaxHealth){
-          let monsterPrize=userData.currentMonster.healthMax;
+          let monsterPrize=userData.currentMonster.gold;
           userData.basicData.colectedGold+=monsterPrize;
           userData.currentMonster=this.state.monstersData[Math.floor(Math.random()*this.state.monstersData.length)];
           userData.currentMonster.takenDamage=monsterDamage-monsterMaxHealth;
+          userData.basicData.killedMonsters+=1;
+          if (userData.basicData.killedMonsters===20){
+              userData.basicData.killedMonsters=0;
+              userData.basicData.gainedLootboxes+=1;
+          }
           console.log(userData)
       }else{
           userData.currentMonster.takenDamage=monsterDamage;
       }
-
-
-
       this.changeDataOnServer(userData)
   };
 
@@ -147,6 +147,7 @@ class App extends Component{
                                       />}/>
                                       <Route path='/character' render={()=><Character
                                           currentMonster={this.state.userData.currentMonster}
+                                          basicData={this.state.userData.basicData}
                                       />}/>
                                       <Route component={NotFound}/>
                                   </Switch>

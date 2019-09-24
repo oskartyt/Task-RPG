@@ -7,13 +7,13 @@ import Knight_M from '../../img/Characters/Knight_M.gif'
 
 class Character extends Component{
     render() {
-        let monster=this.props.currentMonster
+        let monster=this.props.currentMonster;
         return (
             <div className='h-m-container no-style-flex__no-height'>
                 {/*Container with hero data*/}
                 <div className='wood-container '>
                     {/*Hero name*/}
-                    <h2>Wacław pogromca modliszek</h2>
+                    <h2>{this.props.basicData.name}</h2>
                     <div className='no-style-flex__start'>
                         {/*Portarait of the hero with background*/}
                         <div className='character-background'>
@@ -28,17 +28,18 @@ class Character extends Component{
                                     border:'3px solid silver',
                                     backgroundColor:'blue'}}>
                                 <div
-                                    style={{width:'30%',
+                                    style={{width:`${this.props.basicData.killedMonsters/20*100}%`,
                                         height:'100%',
                                         backgroundColor:'gold'
                                     }}
                                     ></div>
                             </div>
                             <h2>Liczba ubitych potworów</h2>
-                            <span>7/20</span>
+                            <span>{this.props.basicData.killedMonsters}/20</span>
                             <h2>Zdobyte złoto</h2>
-                            <span>37</span>
-
+                            <span>{this.props.basicData.colectedGold}</span>
+                            <h2>Zdobyte skrzynie niespodziewanej nagrody</h2>
+                            <span>{this.props.basicData.gainedLootboxes}</span>
                         </div>
                     </div>
 
@@ -68,6 +69,8 @@ class Character extends Component{
                             </div>
                             <h2>Zadane obrażenia</h2>
                             <span>{monster.takenDamage}/{monster.healthMax}</span>
+                            <h2>Nagroda</h2>
+                            <span>{monster.gold} sztuk złota</span>
                         </div>
                     </div>
 

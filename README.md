@@ -7,3 +7,6 @@ Completing task brings user stats to fight monsters.
 Each killed monster brings gives user gold, which is used to buy rewards.
 
 Tasks and rewards are created by user. The value of them is chosen from prepared (uneditable) options.
+
+To start Server use command: `json-server -p 3002 db/users-data.json`
+`
