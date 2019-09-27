@@ -16,7 +16,7 @@
         "image": "D4",
         "healthMax": 40,
         "gold": 110,
-        "takenDamage": 4
+        "takenDamage": 13
       },
       "tasks": {
         "daily": [
@@ -67,10 +67,6 @@
             "type": 9
           },
           {
-            "name": "Daj radę5",
-            "type": 9
-          },
-          {
             "name": "asdasfd",
             "type": 5
           },
@@ -84,7 +80,7 @@
       "lastVisitDate": {
         "year": 2019,
         "month": 8,
-        "day": 24
+        "day": 27
       }
     }
   ],
