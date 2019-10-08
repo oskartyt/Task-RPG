@@ -67,6 +67,10 @@
             "type": 9
           },
           {
+            "name": "Daj radę5",
+            "type": 9
+          },
+          {
             "name": "asdasfd",
             "type": 5
           },
@@ -79,8 +83,8 @@
       },
       "lastVisitDate": {
         "year": 2019,
-        "month": 8,
-        "day": 27
+        "month": 9,
+        "day": 8
       }
     }
   ],

@@ -3,4 +3,32 @@
 header.wood-container{
   width:100vw;
   height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div.logo{
+    padding-left: 20px;
+  }
+  nav{
+    height: 100%;
+    ul{
+      height: 100%;
+      li{
+        height: 100%;
+        display: inline-block;
+        width: 110px;
+        //margin-bottom: 10px;
+        border-left: 6px solid $wood-border-color;
+        text-align: center;
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          line-height: 100%;
+        }
+      }
+    }
+  }
 }

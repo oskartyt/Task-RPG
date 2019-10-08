@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom';
 
 import Header from '../Header/Header';
-import Sidebar from '../Sidebar/Sidebar';
 
 import Tasks from '../Tasks/Tasks';
 import Character from '../Character/Character';
@@ -135,7 +134,7 @@ class App extends Component{
               <div className='main-container'>
                   <Header/>
                   <section className='main-section'>
-                      <Sidebar/>
+                      {/*<Sidebar/>*/}
                       <div className='main-elements'>
                           {((this.state.loadedUserContent && this.state.loadedMonstersContent)?
                                   <Switch>
