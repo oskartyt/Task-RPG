@@ -15,6 +15,7 @@ import Character from '../Character/Character';
 import NotFound from '../NotFound/NotFound';
 import NotLoaded from '../NotLoaded/NotLoaded';
 // import Fight from '../Fight/Fight';
+import TestComponent from '../ReduxTest/TestComponent'
 
 class App extends Component{
   state={
@@ -148,6 +149,7 @@ class App extends Component{
                                           currentMonster={this.state.userData.currentMonster}
                                           basicData={this.state.userData.basicData}
                                       />}/>
+                                      <Route path='/test' render={()=><TestComponent/>}/>
                                       <Route component={NotFound}/>
                                   </Switch>
                                   :

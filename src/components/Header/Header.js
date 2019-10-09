@@ -14,6 +14,7 @@ class Header extends Component{
                         {/*Doddać klase aktywności activeClassName={}*/}
                         <li><NavLink  to="/">Zadania</NavLink></li>
                         <li><NavLink to="/character">Postać</NavLink></li>
+                        <li><NavLink to="/test">TestRdx</NavLink></li>
                         <li><NavLink to="/xyz">Kraina 404</NavLink></li>
                     </ul>
                 </nav>
