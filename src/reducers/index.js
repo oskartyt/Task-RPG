@@ -11,7 +11,7 @@ const reducerDz=(state='Działa', action)=>{
     }
 };
 
-const loggedReducer=(state=true, action)=>{
+const loggedReducer=(state=false, action)=>{
     switch (action.type) {
         case 'LOGGED_IN':
             return true;

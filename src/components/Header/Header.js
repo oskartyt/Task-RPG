@@ -5,11 +5,15 @@ import './Header.scss';
 
 import {logOutAction} from '../../actions'
 
+const mapStateToProps=state=>{
+    return{loggedIn:state.loggedIn}
+};
+
 const mapDispatchToProps=(dispatch)=>{
     return{
         logOut: ()=>dispatch(logOutAction())
     }
-}
+};
 
 class ConnectedHeader extends Component{
     render() {
@@ -19,19 +23,23 @@ class ConnectedHeader extends Component{
                     Pixel Task RPG
                 </div>
                 <nav>
+                    {this.props.loggedIn &&
                     <ul>
                         {/*Doddać klase aktywności activeClassName={}*/}
-                        <li><NavLink  to="/">Zadania</NavLink></li>
+                        <li><NavLink to="/">Zadania</NavLink></li>
                         <li><NavLink to="/character">Postać</NavLink></li>
                         <li><NavLink to="/test">TestRdx</NavLink></li>
                         <li><NavLink to="/xyz">Kraina 404</NavLink></li>
-                        <li><button onClick={this.props.logOut}>Wyloguj</button></li>
+                        <li>
+                            <button onClick={this.props.logOut}>Wyloguj</button>
+                        </li>
                     </ul>
+                    }
                 </nav>
             </header>
         );
     }
 }
 
-const Header=connect(null,mapDispatchToProps)(ConnectedHeader);
+const Header=connect(mapStateToProps,mapDispatchToProps)(ConnectedHeader);
 export default Header

@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import './App.scss';
 import {
-  HashRouter,
-  Route,
-  Link,
-  Switch,
-  NavLink,
+    HashRouter,
+    Route,
+    Link,
+    Switch,
+    NavLink
 } from 'react-router-dom';
 import { connect } from "react-redux"
 
@@ -15,6 +15,7 @@ import Tasks from '../Tasks/Tasks';
 import Character from '../Character/Character';
 import NotFound from '../NotFound/NotFound';
 import NotLoaded from '../NotLoaded/NotLoaded';
+import LogIn from '../LogIn/LogIn'
 
 const mapStateToProps=state=>{
     return{loggedIn:state.loggedIn}
@@ -132,7 +133,6 @@ class ConnectedApp extends Component{
 
 
   render() {
-    if (this.props.loggedIn){
       return (
           <HashRouter>
               <div className='main-container'>
@@ -140,13 +140,15 @@ class ConnectedApp extends Component{
                   <section className='main-section'>
                       {/*<Sidebar/>*/}
                       <div className='main-elements'>
-                          {((this.state.loadedUserContent && this.state.loadedMonstersContent)?
+                          {(this.props.loggedIn)?
+
+                              ((this.state.loadedUserContent && this.state.loadedMonstersContent)?
                                   <Switch>
                                       <Route exact path='/' render={()=><Tasks
-                                              tasks={this.state.userData.tasks}
-                                              addDailyTask={this.newDailyTask}
-                                              deleteDailyTask={this.deleteDailyTask}
-                                              completeDailyTask={this.completeDailyTask}
+                                          tasks={this.state.userData.tasks}
+                                          addDailyTask={this.newDailyTask}
+                                          deleteDailyTask={this.deleteDailyTask}
+                                          completeDailyTask={this.completeDailyTask}
                                       />}/>
                                       <Route path='/character' render={()=><Character
                                           currentMonster={this.state.userData.currentMonster}
@@ -157,17 +159,17 @@ class ConnectedApp extends Component{
                                   </Switch>
                                   :
                                   <NotLoaded/>
-                          )}
+                              )
+                              :
+                              <LogIn/>
+                          }
+
 
                       </div>
                   </section>
               </div>
           </HashRouter>
       )
-    }else{
-      return <h1>strona logowania</h1>
-    }
-
   }
 }
 
