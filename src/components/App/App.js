@@ -7,6 +7,7 @@ import {
   Switch,
   NavLink,
 } from 'react-router-dom';
+import { connect } from "react-redux"
 
 import Header from '../Header/Header';
 
@@ -14,12 +15,14 @@ import Tasks from '../Tasks/Tasks';
 import Character from '../Character/Character';
 import NotFound from '../NotFound/NotFound';
 import NotLoaded from '../NotLoaded/NotLoaded';
-// import Fight from '../Fight/Fight';
-import TestComponent from '../ReduxTest/TestComponent'
 
-class App extends Component{
+const mapStateToProps=state=>{
+    return{loggedIn:state.loggedIn}
+};
+
+class ConnectedApp extends Component{
   state={
-      loggedIn:true,
+      // loggedIn:true,
       loadedUserContent:false,
       loadedMonstersContent:false,
       userData:{},
@@ -129,7 +132,7 @@ class App extends Component{
 
 
   render() {
-    if (this.state.loggedIn){
+    if (this.props.loggedIn){
       return (
           <HashRouter>
               <div className='main-container'>
@@ -149,7 +152,7 @@ class App extends Component{
                                           currentMonster={this.state.userData.currentMonster}
                                           basicData={this.state.userData.basicData}
                                       />}/>
-                                      <Route path='/test' render={()=><TestComponent/>}/>
+                                      {/*<Route path='/test' render={()=><TestComponent/>}/>*/}
                                       <Route component={NotFound}/>
                                   </Switch>
                                   :
@@ -168,4 +171,5 @@ class App extends Component{
   }
 }
 
+const App=connect(mapStateToProps)(ConnectedApp);
 export default App;
