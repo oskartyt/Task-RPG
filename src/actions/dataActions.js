@@ -16,9 +16,10 @@ const changeData=(userData,dispatch)=>{
         });
 };
 
+//Sprawdzić poprawność w momencie uzycia
 export const changeDataAction=(userData)=>{
     return function(dispatch) {
-        return changeData(userData,dispatch);
+        return ()=>changeData(userData,dispatch); //Czy stosować funkcję strzałkową czy przekazać wywołanie funkcji? Sprawdzić w działaniu.
         // fetch('http://localhost:3002/users/user1',{
         //     method : 'PUT',
         //     headers: {
@@ -56,11 +57,24 @@ export const getDataAction=()=>{
                     userData.tasks.uncompletedDaily=userData.tasks.daily;
                     changeData(userData,dispatch);
                 }
-                dispatch({ type: "DATA_LOADED", payload: json });
             })
             .catch(err => {
                 console.log(err);
                 dispatch({type: "DATA_ERROR"})
             });
     };
+};
+
+export const getMonsterDataAction=()=>{
+    return function(dispatch) {
+        return fetch('http://localhost:3002/monsters')
+            .then(response => response.json())
+            .then(json => {
+                dispatch({ type: "MONSTER_DATA_LOADED", payload: json })
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({type: "MONSTER_DATA_ERROR"})
+            });
+    }
 };

@@ -1,13 +1,7 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import './App.scss';
-import {
-    HashRouter,
-    Route,
-    Link,
-    Switch,
-    NavLink
-} from 'react-router-dom';
-import { connect } from "react-redux"
+import {HashRouter, Route, Switch} from 'react-router-dom';
+import {connect} from "react-redux"
 
 import Header from '../Header/Header';
 
@@ -18,14 +12,20 @@ import NotLoaded from '../NotLoaded/NotLoaded';
 import LogIn from '../LogIn/LogIn'
 
 import {getDataAction} from "../../actions/dataActions";
+import {getMonsterDataAction} from "../../actions/dataActions";
 
 const mapStateToProps=state=>{
-    return{loggedIn:state.loggedIn}
+    return{
+        loggedIn: state.loggedIn,
+        userData: state.userData,
+        monsterData: state.monsterData
+    }
 };
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        getData: ()=>dispatch(getDataAction())
+        getData: ()=>dispatch(getDataAction()),
+        getMonsterData: ()=>dispatch(getMonsterDataAction())
     }
 };
 
@@ -39,6 +39,7 @@ class ConnectedApp extends Component{
   };
   componentDidMount() {
       this.props.getData();
+      this.props.getMonsterData();
       fetch('http://localhost:3002/users/user1')
           .then(data=>data.json())
           .then(data=>{
@@ -152,7 +153,7 @@ class ConnectedApp extends Component{
                       <div className='main-elements'>
                           {(this.props.loggedIn)?
 
-                              ((this.state.loadedUserContent && this.state.loadedMonstersContent)?
+                              ((this.props.userData && this.props.monsterData)?
                                   <Switch>
                                       <Route exact path='/' render={()=><Tasks
                                           tasks={this.state.userData.tasks}

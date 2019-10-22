@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 
 import loggedReducer from './loggedReducer'
 import dataReducer from './dataReducer'
+import monsterDataReducer from './monsterDataReducer'
 
 const reducerDz=(state='Działa', action)=>{
     switch (action.type) {
@@ -19,6 +20,7 @@ const reducerDz=(state='Działa', action)=>{
  const rootReducer = combineReducers({
      loggedIn: loggedReducer,
      userData: dataReducer,
+     monsterData: monsterDataReducer,
      testowaFraza: reducerDz,
 });
 
