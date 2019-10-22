@@ -20,13 +20,14 @@ header.wood-container{
         //margin-bottom: 10px;
         border-left: 6px solid $wood-border-color;
         text-align: center;
-        a{
+        a, button{
           display: flex;
           justify-content: center;
           align-items: center;
           width: 100%;
           height: 100%;
           line-height: 100%;
+          margin:0;
         }
       }
     }

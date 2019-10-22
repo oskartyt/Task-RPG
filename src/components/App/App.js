@@ -154,7 +154,6 @@ class ConnectedApp extends Component{
                                           currentMonster={this.state.userData.currentMonster}
                                           basicData={this.state.userData.basicData}
                                       />}/>
-                                      {/*<Route path='/test' render={()=><TestComponent/>}/>*/}
                                       <Route component={NotFound}/>
                                   </Switch>
                                   :

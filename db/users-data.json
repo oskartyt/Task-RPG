@@ -6,27 +6,23 @@
         "name": "Wacław Pogromca Modliszek",
         "type": "knight",
         "sex": "M",
-        "colectedGold": 580,
-        "killedMonsters": 3,
+        "colectedGold": 690,
+        "killedMonsters": 4,
         "gainedLootboxes": 2
       },
       "currentMonster": {
-        "id": 4,
-        "name": "Kultysta Złego Zła",
-        "image": "D4",
-        "healthMax": 40,
-        "gold": 110,
-        "takenDamage": 13
+        "id": 3,
+        "name": "Demoniczna Rogacizna",
+        "image": "D3",
+        "healthMax": 30,
+        "gold": 80,
+        "takenDamage": 0
       },
       "tasks": {
         "daily": [
           {
             "name": "Zmyj naczynia",
             "type": 2
-          },
-          {
-            "name": "Daj radę2",
-            "type": 9
           },
           {
             "name": "Daj radę3",
@@ -55,10 +51,6 @@
             "type": 2
           },
           {
-            "name": "Daj radę2",
-            "type": 9
-          },
-          {
             "name": "Daj radę3",
             "type": 9
           },
@@ -84,7 +76,7 @@
       "lastVisitDate": {
         "year": 2019,
         "month": 9,
-        "day": 21
+        "day": 22
       }
     }
   ],
