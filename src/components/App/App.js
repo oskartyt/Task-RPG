@@ -17,8 +17,16 @@ import NotFound from '../NotFound/NotFound';
 import NotLoaded from '../NotLoaded/NotLoaded';
 import LogIn from '../LogIn/LogIn'
 
+import {getDataAction} from "../../actions/dataActions";
+
 const mapStateToProps=state=>{
     return{loggedIn:state.loggedIn}
+};
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        getData: ()=>dispatch(getDataAction())
+    }
 };
 
 class ConnectedApp extends Component{
@@ -30,24 +38,26 @@ class ConnectedApp extends Component{
       monstersData: {}
   };
   componentDidMount() {
+      this.props.getData();
       fetch('http://localhost:3002/users/user1')
           .then(data=>data.json())
           .then(data=>{
               console.log(data);
-              if (
-                  data.lastVisitDate.year===new Date().getFullYear() &&
-                  data.lastVisitDate.month===new Date().getMonth() &&
-                  data.lastVisitDate.day===new Date().getDate()
-              ){
-                  console.log('no date change');
-                  this.setState({userData:data,loadedUserContent:true});
-              }else{
-                  console.log('date change');
-                  let userData=data;
-                  userData.lastVisitDate={year:new Date().getFullYear(),month:new Date().getMonth(), day:new Date().getDate()};
-                  userData.tasks.uncompletedDaily=userData.tasks.daily;
-                  this.changeDataOnServer(userData);
-              }
+              this.setState({userData:data,loadedUserContent:true});//temporary line
+              // if (
+              //     data.lastVisitDate.year===new Date().getFullYear() &&
+              //     data.lastVisitDate.month===new Date().getMonth() &&
+              //     data.lastVisitDate.day===new Date().getDate()
+              // ){
+              //     console.log('no date change');
+              //     this.setState({userData:data,loadedUserContent:true});
+              // }else{
+              //     console.log('date change');
+              //     let userData=data;
+              //     userData.lastVisitDate={year:new Date().getFullYear(),month:new Date().getMonth(), day:new Date().getDate()};
+              //     userData.tasks.uncompletedDaily=userData.tasks.daily;
+              //     this.changeDataOnServer(userData);
+              // }
 
           })
           .catch(err=>{console.log(err)});
@@ -172,5 +182,5 @@ class ConnectedApp extends Component{
   }
 }
 
-const App=connect(mapStateToProps)(ConnectedApp);
+const App=connect(mapStateToProps,mapDispatchToProps)(ConnectedApp);
 export default App;

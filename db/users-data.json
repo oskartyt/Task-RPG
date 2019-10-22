@@ -16,7 +16,7 @@
         "image": "D3",
         "healthMax": 30,
         "gold": 80,
-        "takenDamage": 0
+        "takenDamage": 23
       },
       "tasks": {
         "daily": [

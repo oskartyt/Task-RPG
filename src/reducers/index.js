@@ -1,5 +1,8 @@
 import {combineReducers} from 'redux';
 
+import loggedReducer from './loggedReducer'
+import dataReducer from './dataReducer'
+
 const reducerDz=(state='Działa', action)=>{
     switch (action.type) {
         case 'WORKS':
@@ -11,20 +14,12 @@ const reducerDz=(state='Działa', action)=>{
     }
 };
 
-const loggedReducer=(state=false, action)=>{
-    switch (action.type) {
-        case 'LOGGED_IN':
-            return true;
-        case 'LOGGED_OUT':
-            return false;
-        default:
-            return state;
-    }
-}
+
 
  const rootReducer = combineReducers({
-    loggedIn: loggedReducer,
-    testowaFraza: reducerDz
+     loggedIn: loggedReducer,
+     userData: dataReducer,
+     testowaFraza: reducerDz,
 });
 
 export default rootReducer;
