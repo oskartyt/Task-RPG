@@ -19,7 +19,7 @@ const changeData=(userData,dispatch)=>{
 //Sprawdzić poprawność w momencie uzycia
 export const changeDataAction=(userData)=>{
     return function(dispatch) {
-        return ()=>changeData(userData,dispatch); //Czy stosować funkcję strzałkową czy przekazać wywołanie funkcji? Sprawdzić w działaniu.
+        return changeData(userData,dispatch); //Czy stosować funkcję strzałkową czy przekazać wywołanie funkcji? Sprawdzić w działaniu.
         // fetch('http://localhost:3002/users/user1',{
         //     method : 'PUT',
         //     headers: {
@@ -70,6 +70,7 @@ export const getMonsterDataAction=()=>{
         return fetch('http://localhost:3002/monsters')
             .then(response => response.json())
             .then(json => {
+                console.log(json);
                 dispatch({ type: "MONSTER_DATA_LOADED", payload: json })
             })
             .catch(err => {
